@@ -1,0 +1,49 @@
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.line { 
+      fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+} 
+
+
+.point {
+  fill: steelblue;
+  stroke: #000;
+}
+
+.links line {
+  stroke: #999;
+  stroke-opacity: 0.6;
+}
+
+.nodes circle {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.annotation path {
+stroke: var(--annotation-color);
+fill: rgba(0,0,0,0);
+}
+
+.annotation path.connector-arrow{
+fill: var(--annotation-color);
+}
+
+.annotation text {
+fill: var(--annotation-color);
+}
+
+.annotation-title {
+font-weight: bold;
+}
