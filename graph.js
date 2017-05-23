@@ -17,7 +17,7 @@ create_graph = function() {
         .force("charge", d3.forceManyBody())
         .force("center", d3.forceCenter(width / 2, height / 2));
 
-    d3.json("miserables.json", function(error, graph) {
+    d3.json("data/graph.json", function(error, graph) {
       if (error) throw error;
 
       var link = svg.append("g")
@@ -48,17 +48,17 @@ create_graph = function() {
           .on("tick", ticked);
 
       simulation.force("link")
-          .links(graph.links).distance(60);
+          .links(graph.links).distance(200);
 
       function ticked() {
         link
-            .attr("x1", function(d) { return d.source.x; })
+            .attr("x1", function(d) { return d.source.x + d.source.group * 300 - 500; })
             .attr("y1", function(d) { return d.source.y; })
-            .attr("x2", function(d) { return d.target.x; })
+            .attr("x2", function(d) { return d.target.x + d.target.group * 300 - 500 ; })
             .attr("y2", function(d) { return d.target.y; });
 
         node
-            .attr("cx", function(d) { return d.x; })
+            .attr("cx", function(d) { return d.x + d.group * 300 - 500; })
             .attr("cy", function(d) { return d.y; });
       }
     });
@@ -79,6 +79,31 @@ create_graph = function() {
       d.fx = null;
       d.fy = null;
     }
+//
+//     force.on("tick", function(e) {
+
+//       // Push different nodes in different directions for clustering.
+//       var k = 6 * e.alpha;
+//       nodes.forEach(function(o, i) {
+//         o.x += i & 2 ? k : -k;
+//         o.y += i & 1 ? k : -k;
+//       });
+
+//       node.attr("cx", function(d) { return d.x; })
+//           .attr("cy", function(d) { return d.y; });
+
+//       vis.selectAll("path")
+//         .data(groups)
+//           .attr("d", groupPath)
+//         .enter().insert("path", "circle")
+//           .style("fill", groupFill)
+//           .style("stroke", groupFill)
+//           .style("stroke-width", 40)
+//           .style("stroke-linejoin", "round")
+//           .style("opacity", .2)
+//           .attr("d", groupPath);
+//     });
+
 }
 create_graph()
 init_chart = function() {
