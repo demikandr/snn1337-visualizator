@@ -31,7 +31,7 @@ create_graph = function() {
         .selectAll("circle")
         .data(graph.nodes)
         .enter().append("circle")
-          .attr("r", 5)
+          .attr("r", 7)
           .attr("fill", function(d) { return color(d.group); })
           .on("click", d => update_chart(get_node_id(d)))
           .call(d3.drag()
